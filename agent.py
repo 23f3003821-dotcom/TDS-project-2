@@ -2,7 +2,7 @@ from langgraph.graph import StateGraph, END, START
 from langchain_core.rate_limiters import InMemoryRateLimiter
 from langgraph.prebuilt import ToolNode
 from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
-from tools import get_rendered_html, download_file, post_request, run_code, add_dependencies
+from tools import get_rendered_html, download_file, post_request, run_code, add_dependencies, transcribe_audio
 from typing import TypedDict, Annotated, List, Any
 from langchain.chat_models import init_chat_model
 from langgraph.graph.message import add_messages
@@ -20,7 +20,7 @@ class AgentState(TypedDict):
     messages: Annotated[List, add_messages]
 
 
-TOOLS = [run_code, get_rendered_html, download_file, post_request, add_dependencies]
+TOOLS = [run_code, get_rendered_html, download_file, post_request, add_dependencies, transcribe_audio]
 
 
 # -------------------------------------------------

@@ -3,3 +3,4 @@ from .run_code import run_code
 from .send_request import post_request
 from .download_file import download_file
 from .add_dependencies import add_dependencies
+from .transcribe_audio import transcribe_audio
