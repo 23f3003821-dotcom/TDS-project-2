@@ -35,7 +35,7 @@ rate_limiter = InMemoryRateLimiter(
 # Use Google AI Studio (Gemini) directly
 llm = init_chat_model(
    model_provider="google_genai",
-   model="gemini-1.5-flash",
+   model="gemini-2.0-flash",
    api_key=os.getenv("API_KEY"),
    rate_limiter=rate_limiter
 ).bind_tools(TOOLS)   
