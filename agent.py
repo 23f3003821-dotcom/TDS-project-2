@@ -2,7 +2,7 @@ from langgraph.graph import StateGraph, END, START
 from langchain_core.rate_limiters import InMemoryRateLimiter
 from langgraph.prebuilt import ToolNode
 from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
-from tools import get_rendered_html, download_file, post_request, run_code, add_dependencies, transcribe_audio
+from tools import get_rendered_html, download_file, post_request, run_code, add_dependencies
 from typing import TypedDict, Annotated, List, Any
 from langchain.chat_models import init_chat_model
 from langgraph.graph.message import add_messages
@@ -20,7 +20,7 @@ class AgentState(TypedDict):
     messages: Annotated[List, add_messages]
 
 
-TOOLS = [run_code, get_rendered_html, download_file, post_request, add_dependencies, transcribe_audio]
+TOOLS = [run_code, get_rendered_html, download_file, post_request, add_dependencies]
 
 
 # -------------------------------------------------
@@ -32,12 +32,10 @@ rate_limiter = InMemoryRateLimiter(
     max_bucket_size=9  
 )
 
-# Use AI Pipe proxy with OpenRouter API
-AIPIPE_BASE_URL = "https://aipipe.org/openrouter/v1"
+# Use Google AI Studio (Gemini) directly
 llm = init_chat_model(
-   model_provider="openai",
-   model="openai/gpt-4.1-nano",
-   base_url=AIPIPE_BASE_URL,
+   model_provider="google_genai",
+   model="gemini-2.0-flash",
    api_key=os.getenv("API_KEY"),
    rate_limiter=rate_limiter
 ).bind_tools(TOOLS)   
