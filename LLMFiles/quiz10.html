@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Level 10: Final Pipeline</title>
+</head>
+<body>
+    <h1>Level 10: Final Pipeline</h1>
+    <div>
+        <p><b>Task:</b> The Data Pipeline (Joins & Filtering).</p>
+        <p>This task requires joining data from three endpoints:</p>
+        <ul>
+            <li><code>https://tdsbasictest.vercel.app/api/db/users</code></li>
+            <li><code>https://tdsbasictest.vercel.app/api/db/products</code></li>
+            <li><code>https://tdsbasictest.vercel.app/api/db/orders</code></li>
+        </ul>
+        <p><b>Logic:</b></p>
+        <ol>
+            <li>Filter for users in the 'gold' tier.</li>
+            <li>Find all orders belonging to these gold users.</li>
+            <li>Calculate the total value of these orders (sum of product prices in the order).</li>
+        </ol>
+        <p><b>Question:</b> What is the total calculated value?</p>
+    </div>
+    <h3>Submission</h3>
+    <p>Post your JSON answer to: <code>https://tdsbasictest.vercel.app/submit/10</code></p>
+    <pre>
+{
+  "email": "&lt;YOUR_EMAIL&gt;",
+  "secret": "&lt;YOUR_SECRET&gt;",
+  "url": "&lt;THIS_PAGE_URL&gt;"
+  "answer": &lt;YOUR_ANSWER&gt;
+}
+    </pre>
+</body>
+</html>

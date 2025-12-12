@@ -1,0 +1,13 @@
+.env
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.git/
+.venv/
+venv/
+*.log
+.DS_Store
+LLMFiles/*.html
+LLMFiles/*.js
+LLMFiles/*.csv
