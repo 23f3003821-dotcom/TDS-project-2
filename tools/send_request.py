@@ -2,10 +2,9 @@ from langchain_core.tools import tool
 import requests
 import json
 from typing import Any, Dict, Optional
-from urllib.parse import urljoin
 
 @tool
-def post_request(url: str, payload: Dict[str, Any], headers: Optional[Dict[str, str]] = None, base_url: Optional[str] = None) -> Any:
+def post_request(url: str, payload: Dict[str, Any], headers: Optional[Dict[str, str]] = None) -> Any:
     """
     Send an HTTP POST request to the given URL with the provided payload.
 
@@ -14,11 +13,10 @@ def post_request(url: str, payload: Dict[str, Any], headers: Optional[Dict[str, 
     services during graph execution.
     REMEMBER: This a blocking function so it may take a while to return. Wait for the response.
     Args:
-        url (str): The endpoint to send the POST request to. Can be relative or absolute.
+        url (str): The endpoint to send the POST request to.
         payload (Dict[str, Any]): The JSON-serializable request body.
         headers (Optional[Dict[str, str]]): Optional HTTP headers to include
             in the request. If omitted, a default JSON header is applied.
-        base_url (Optional[str]): Base URL for resolving relative URLs (e.g., "https://example.com").
 
     Returns:
         Any: The response body. If the server returns JSON, a parsed dict is
@@ -28,14 +26,6 @@ def post_request(url: str, payload: Dict[str, Any], headers: Optional[Dict[str, 
         requests.HTTPError: If the server responds with an unsuccessful status.
         requests.RequestException: For network-related errors.
     """
-    # Handle relative URLs
-    if not url.startswith(('http://', 'https://')):
-        if base_url:
-            url = urljoin(base_url, url)
-        else:
-            # Default to TDS quiz server if no base_url provided
-            url = urljoin("https://tds-llm-analysis.s-anand.net", url)
-    
     headers = headers or {"Content-Type": "application/json"}
     try:
         print(f"\nSending Answer \n{json.dumps(payload, indent=4)}\n to url: {url}")
