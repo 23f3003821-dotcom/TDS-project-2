@@ -32,12 +32,13 @@ rate_limiter = InMemoryRateLimiter(
     max_bucket_size=9  
 )
 
-# Use Google AI Studio (Gemini) directly
+# Use OpenAI via AI Pipe proxy
 llm = init_chat_model(
-   model_provider="google_genai",
-   model="gemini-2.5-flash",
-   api_key=os.getenv("API_KEY"),
-   rate_limiter=rate_limiter
+    model_provider="openai",
+    model="openai/gpt-4.1-nano",
+    api_key=os.getenv("API_KEY"),
+    base_url="https://aipipe.org/openrouter/v1",
+    rate_limiter=rate_limiter
 ).bind_tools(TOOLS)   
 
 
