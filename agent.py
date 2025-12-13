@@ -63,10 +63,11 @@ Your job is to:
 STRICT RULES — FOLLOW EXACTLY:
 
 URL RULES:
-- The base URL for all quizzes is: https://tds-llm-analysis.s-anand.net
-- If you see /submit, use: https://tds-llm-analysis.s-anand.net/submit
-- If you see /demo, use: https://tds-llm-analysis.s-anand.net/demo
-- NEVER use playwright.azurewebsites.net or any other domain.
+- Extract the base URL (origin) from the quiz page URL you are solving.
+- Example: if quiz URL is https://p2testing.vercel.app/q1.html, base is https://p2testing.vercel.app
+- Example: if quiz URL is https://tds-llm-analysis.s-anand.net/demo, base is https://tds-llm-analysis.s-anand.net
+- When you see relative paths like /submit or /submit/1, prepend the base URL.
+- ALWAYS provide FULL URLs starting with https:// when calling post_request.
 
 SUBMISSION FORMAT:
 - Always submit a JSON object with keys: email, secret, url, answer
