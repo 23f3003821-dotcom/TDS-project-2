@@ -62,8 +62,8 @@ Your job is to:
    - If no new URL is present → return "END".
 
 CRITICAL - NEXT URL HANDLING:
-- After submitting, the response will look like: {"correct": true/false, "url": "https://...next-question..."}
-- You MUST use the "url" from this response as the NEXT question to solve
+- After submitting, the response contains "correct" (true or false) and "url" (the next question)
+- You MUST use the "url" value from this response as the NEXT question to solve
 - NEVER fetch the same URL twice - always advance to the NEW URL
 
 STRICT RULES — FOLLOW EXACTLY:
