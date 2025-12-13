@@ -55,11 +55,14 @@ async def solve(request: Request, background_tasks: BackgroundTasks):
         raise HTTPException(status_code=400, detail="Invalid JSON")
     url = data.get("url")
     secret = data.get("secret")
-    if not url or not secret:
-        raise HTTPException(status_code=400, detail="Invalid JSON")
+    email = data.get("email")
+    if not url or not secret or not email:
+        raise HTTPException(status_code=400, detail="Missing required fields: email, secret, url")
     
     if secret != SECRET:
         raise HTTPException(status_code=403, detail="Invalid secret")
+    if email != EMAIL:
+        raise HTTPException(status_code=403, detail="Invalid email")
     print("Verified starting the task...")
     background_tasks.add_task(run_agent, url)
 
