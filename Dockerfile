@@ -25,9 +25,9 @@ ENV PYTHONIOENCODING=utf-8
 # --- Install project dependencies using uv ---
 RUN uv sync --frozen
 
-# HuggingFace Spaces exposes port 7860
+# Expose port (Render uses PORT env var)
 EXPOSE 7860
 
 # --- Run your FastAPI app ---
-# uvicorn must be in pyproject dependencies
-CMD ["uv", "run", "main.py"]
+# Use shell form so PORT env var is expanded
+CMD uv run uvicorn main:app --host 0.0.0.0 --port ${PORT:-7860}
