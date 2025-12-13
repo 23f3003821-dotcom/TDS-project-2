@@ -27,9 +27,9 @@ TOOLS = [run_code, get_rendered_html, download_file, post_request, add_dependenc
 # LLM (via AI Pipe proxy)
 # -------------------------------------------------
 rate_limiter = InMemoryRateLimiter(
-    requests_per_second=9/60,  
-    check_every_n_seconds=1,  
-    max_bucket_size=9  
+    requests_per_second=1,  # Faster - 1 request per second
+    check_every_n_seconds=0.5,  
+    max_bucket_size=30  # Allow burst
 )
 
 # Use OpenAI via AI Pipe proxy
