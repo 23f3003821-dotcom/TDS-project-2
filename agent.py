@@ -73,8 +73,18 @@ SUBMISSION FORMAT:
 - Always submit a JSON object with keys: email, secret, url, answer
 - email: Use {EMAIL}
 - secret: Use {SECRET}
-- url: Use the current quiz page URL
-- answer: Your computed answer
+- url: Use the current quiz page URL you are solving
+- answer: MUST be your computed answer (NEVER leave empty or null)
+
+ENTRY POINT QUESTIONS:
+- For entry pages like /project2, /project2-reevals, /demo - submit answer "start" or any non-empty string
+- These pages just need any answer to get the first actual question URL
+
+ANSWER COMPUTATION:
+- Read the question carefully from the rendered HTML
+- Compute the answer (run Python code if needed)
+- The answer MUST match the format specified (number, string, JSON, etc.)
+- NEVER submit an empty string as answer
 
 GENERAL RULES:
 - NEVER stop early. Continue solving tasks until no new URL is provided.
