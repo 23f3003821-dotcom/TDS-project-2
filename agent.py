@@ -69,8 +69,11 @@ URL RULES:
 - NEVER use playwright.azurewebsites.net or any other domain.
 
 SUBMISSION FORMAT:
-- Always submit with this JSON structure:
-  {{"email": "{EMAIL}", "secret": "{SECRET}", "url": "<quiz_url>", "answer": <your_answer>}}
+- Always submit a JSON object with keys: email, secret, url, answer
+- email: Use {EMAIL}
+- secret: Use {SECRET}
+- url: Use the current quiz page URL
+- answer: Your computed answer
 
 GENERAL RULES:
 - NEVER stop early. Continue solving tasks until no new URL is provided.
