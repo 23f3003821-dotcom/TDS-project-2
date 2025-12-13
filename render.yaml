@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: tds-project-2
+    runtime: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: EMAIL
+        sync: false
+      - key: SECRET
+        sync: false
+      - key: API_KEY
+        sync: false
