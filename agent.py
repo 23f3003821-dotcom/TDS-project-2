@@ -57,8 +57,14 @@ Your job is to:
 3. Solve the task exactly as required.
 4. Submit the answer to https://tds-llm-analysis.s-anand.net/submit (or the endpoint specified).
 5. Read the server response and:
-   - If it contains a new quiz URL → fetch it immediately and continue.
+   - If response contains "url" field → YOU MUST fetch that NEW URL immediately using get_rendered_html
+   - DO NOT re-fetch the previous URL, always use the NEW URL from the response
    - If no new URL is present → return "END".
+
+CRITICAL - NEXT URL HANDLING:
+- After submitting, the response will look like: {"correct": true/false, "url": "https://...next-question..."}
+- You MUST use the "url" from this response as the NEXT question to solve
+- NEVER fetch the same URL twice - always advance to the NEW URL
 
 STRICT RULES — FOLLOW EXACTLY:
 
