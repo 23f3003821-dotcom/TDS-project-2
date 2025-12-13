@@ -28,6 +28,12 @@ def post_request(url: str, payload: Dict[str, Any], headers: Optional[Dict[str, 
     """
     headers = headers or {"Content-Type": "application/json"}
     try:
+        # Handle relative URLs - convert to absolute
+        if url.startswith('/'):
+            url = f"https://tds-llm-analysis.s-anand.net{url}"
+        elif not url.startswith('http'):
+            url = f"https://tds-llm-analysis.s-anand.net/{url}"
+        
         print(f"\nSending Answer \n{json.dumps(payload, indent=4)}\n to url: {url}")
         response = requests.post(url, json=payload, headers=headers)
 
